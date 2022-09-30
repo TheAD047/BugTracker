@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <div th:replace="header"></div>
+    <h1 class="text-center">Register</h1>
+    <div class="container">
+        <form class="form-signin" id="form" >
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="username">Email</label>
+                    <input type="text" class="form-control" id="username" placeholder="Email" name="username">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="password" name="password">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="userRole">Password</label>
+                    <select id="userRole" class="form-control" name="userRole">
+                        <option selected>Choose Role</option>
+                        <option>ADMIN</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Register</button>
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById('form');
+
+        form.addEventListener('submit', function (e){
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            fetch('http://localhost:8080/api/bt/admin/register',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+        });
+    </script>
+</body>
+</html>
