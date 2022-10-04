@@ -26,6 +26,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/api/bt/admin/register")
                     .permitAll()
+                    .antMatchers("/api/bt/bugs/add")
+                    .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Bug</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<body>
+    <div th:replace="header"></div>
+    <h1 class="text-center">Add A Bug</h1>
+    <div class="container">
+        <form id="form">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="errorType">Error Type</label>
+                    <input type="text" class="form-control" id="errorType" placeholder="Error Type" name="errorType">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="severity">Severity</label>
+                    <input type="text" class="form-control" id="severity" placeholder="Severity" name="severity">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="projectID">Project ID</label>
+                    <select id="projectID" class="form-control" name="projectID">
+                        <option selected></option>
+                        <div th:each="project : ${projects}">
+                            <option th:text="${project.projectID}"></option>
+                        </div>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="testerID">Tester ID</label>
+                    <input type="number" class="form-control" id="testerID" placeholder="Tester ID" name="testerID" >
+                </div>
+                <div class="form-group col-md-10">
+                    <label for="notes">Notes</label>
+                    <input type="text" class="form-control" id="notes" placeholder="Notes" name="errorNotes" style="display: block; width: 100%;">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" >Submit</button>
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById('form');
+
+        form.addEventListener('submit', function (e){
+            console.log('yup');
+            e.preventDefault();
+            const formData = new FormData(this);
+            console.log(formData);
+
+            const data = Object.fromEntries(formData);
+
+            console.log(data);
+
+            fetch('http://localhost:8080/api/bt/bugs/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+        });
+    </script>
+</body>
+</html>

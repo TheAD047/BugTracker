@@ -1,4 +1,4 @@
-package com.example.BugTracker.Controllers;
+package com.example.BugTracker.Requests;
 
 import com.example.BugTracker.Roles.UserRole;
 import lombok.*;

@@ -1,10 +1,9 @@
 package com.example.BugTracker.Services;
 
-import com.example.BugTracker.Controllers.RegistrationRequest;
+import com.example.BugTracker.Requests.RegistrationRequest;
 import com.example.BugTracker.Models.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor

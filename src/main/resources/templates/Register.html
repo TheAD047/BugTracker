@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 <body>
     <div th:replace="header"></div>
@@ -21,10 +22,12 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="userRole">Password</label>
+                    <label for="userRole">User Role</label>
                     <select id="userRole" class="form-control" name="userRole">
                         <option selected>Choose Role</option>
                         <option>ADMIN</option>
+                        <option>DEV</option>
+                        <option>TESTER</option>
                     </select>
                 </div>
             </div>

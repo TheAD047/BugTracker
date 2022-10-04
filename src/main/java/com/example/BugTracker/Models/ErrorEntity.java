@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "errors")
@@ -12,7 +13,9 @@ import java.sql.Date;
 @Setter
 public class ErrorEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
     @Column(name = "ERR_ID")
     private Long errorID;
 
@@ -42,6 +45,22 @@ public class ErrorEntity {
 
     @Column(name = "ACTIVE_INDICATOR")
     private boolean activeIndicator;
+
+    public ErrorEntity() {
+        this.dateFound = Date.valueOf(LocalDate.now());
+    }
+
+    public ErrorEntity(String errorType, String severity, String errorNotes, String projectID, String foundByTester, long testerID) {
+        this.errorType = errorType;
+        this.severity = severity;
+        this.errorNotes = errorNotes;
+        this.projectID = projectID;
+        this.dateFound = Date.valueOf(LocalDate.now());
+        this.foundByTester = foundByTester;
+        this.testerID = testerID;
+        this.devsAssigned = " ";
+        this.activeIndicator = true;
+    }
 
     @Override
     public String toString() {

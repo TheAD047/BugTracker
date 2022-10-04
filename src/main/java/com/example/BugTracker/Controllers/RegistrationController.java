@@ -1,5 +1,6 @@
 package com.example.BugTracker.Controllers;
 
+import com.example.BugTracker.Requests.RegistrationRequest;
 import com.example.BugTracker.Services.RegistrationService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
