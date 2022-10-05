@@ -5,13 +5,9 @@ import com.example.BugTracker.Models.ProjectEntity;
 import com.example.BugTracker.Repositories.ErrorRepository;
 import com.example.BugTracker.Repositories.ProjectRepository;
 import com.example.BugTracker.Repositories.TesterRepository;
-import com.example.BugTracker.Requests.BugRequest;
-import com.example.BugTracker.Services.AddBugService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,7 +21,6 @@ public class BugController {
     private final ErrorRepository errorRepository;
     private final ProjectRepository projectRepository;
     private final TesterRepository testerRepository;
-    private final AddBugService bugService;
 
     @RequestMapping(value = "/Bugs", method = RequestMethod.GET)
     public String getBugs(Model model) {
@@ -43,11 +38,6 @@ public class BugController {
 
 
         return "Bugs";
-    }
-
-    @RequestMapping(value = "api/bt/bugs/add", method = RequestMethod.POST)
-    public String addBug(@RequestBody BugRequest bug) {
-        return bugService.addBug(bug);
     }
 
     @RequestMapping(value = "/addBug" , method = RequestMethod.GET)

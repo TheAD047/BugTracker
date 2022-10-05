@@ -2,8 +2,6 @@ package com.example.BugTracker.Requests;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import java.sql.Date;
 
 @Getter
 @Setter

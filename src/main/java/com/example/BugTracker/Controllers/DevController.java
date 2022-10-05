@@ -8,9 +8,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
@@ -21,12 +21,11 @@ import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/Devs")
 public class DevController {
     private final DevRepository devRepository;
     private final ProjectsDevsConnectorRepository projectsDevsConnectorRepository;
 
-    @GetMapping
+    @RequestMapping(value = "/Devs", method = RequestMethod.GET)
     public String getAllUsers(Model model) {
         Iterable<Devs> devsIterable = this.devRepository.findAll();
         List<Devs> devs = new ArrayList<Devs>();
@@ -42,7 +41,7 @@ public class DevController {
         return "Devs";
     }
 
-    @GetMapping(path = "/{id}")
+    @RequestMapping(value = "/Devs/{id}", method = RequestMethod.GET)
     public String getDetailedDevs(@PathVariable("id") long devID, Principal principal, Model model) {
         Optional<Devs> dev = this.devRepository.findById(devID);
         if(dev.isEmpty()){
@@ -58,6 +57,11 @@ public class DevController {
             model.addAttribute("dev", dev.get());
             model.addAttribute("module", projects);
         }
-        return "Dev_Details";
+        return "DevDetails";
+    }
+
+    @RequestMapping(value = "/addDev", method = RequestMethod.GET)
+    public String getAddDevsForm(Model model) {
+        return "addDev";
     }
 }

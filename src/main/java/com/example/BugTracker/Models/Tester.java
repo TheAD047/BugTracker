@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter
 public class Tester {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TESTER_ID")
     private Long testerID;
 

@@ -28,6 +28,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                     .permitAll()
                     .antMatchers("/api/bt/bugs/add")
                     .permitAll()
+                    .antMatchers("/api/bt/dev/add")
+                    .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

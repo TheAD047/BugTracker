@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Developer Details</title>
@@ -7,7 +7,14 @@
 </head>
     <body>
         <div th:replace="header"></div>
-        <h1>Dev Details</h1>
+        <div class="text-center">
+            <h1>Dev Details</h1>
+            <p> </p>
+            <div sec:authorize="hasAuthority('ADMIN')">
+                <a href="/addDev" class="btn btn-primary">Add a Developer</a>
+            </div>
+        </div>
+        <hr>
         <table class="table">
             <thead>
                 <th scope="col">Dev ID</th>

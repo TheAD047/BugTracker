@@ -46,14 +46,9 @@
         const form = document.getElementById('form');
 
         form.addEventListener('submit', function (e){
-            console.log('yup');
             e.preventDefault();
             const formData = new FormData(this);
-            console.log(formData);
-
             const data = Object.fromEntries(formData);
-
-            console.log(data);
 
             fetch('http://localhost:8080/api/bt/bugs/add', {
                 method: 'POST',

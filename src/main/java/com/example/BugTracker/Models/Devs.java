@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter
 public class Devs {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DEV_ID")
     private Long devID;
 
@@ -23,6 +23,14 @@ public class Devs {
 
     @Column(name = "DEV_EMAIL")
     private String devEmail;
+
+    public Devs() {}
+
+    public Devs(String devFirstName, String devLastName, String devEmail) {
+        this.devFirstName = devFirstName;
+        this.devLastName = devLastName;
+        this.devEmail = devEmail;
+    }
 
     @Override
     public String toString() {
