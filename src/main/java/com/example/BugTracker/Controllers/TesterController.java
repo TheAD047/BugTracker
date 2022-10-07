@@ -8,9 +8,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
@@ -21,13 +21,12 @@ import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/Testers")
 public class TesterController {
 
     private final TesterRepository testerRepository;
     private final ErrorRepository errorRepository;
 
-    @GetMapping
+    @RequestMapping(value = "/Testers", method = RequestMethod.GET)
     public String getTesters(Model model) {
         Iterable<Tester> testersIterable = testerRepository.findAll();
         List<Tester> testers = new ArrayList<>();
@@ -44,7 +43,7 @@ public class TesterController {
         return "Testers";
     }
 
-    @GetMapping(path ="/{id}")
+    @RequestMapping(value = "/Testers/{id}", method = RequestMethod.GET)
     public String getTesterDetails(@PathVariable("id") long testerID, Principal principal, Model model) {
         Optional<Tester> tester = this.testerRepository.findById(testerID);
         if(tester.isEmpty()){
@@ -61,5 +60,10 @@ public class TesterController {
             model.addAttribute("module", bugs);
         }
         return "TesterDetails";
+    }
+
+    @RequestMapping(value = "/addTester", method = RequestMethod.GET)
+    public String getAddTesterForm(Model model) {
+        return "addTester";
     }
 }

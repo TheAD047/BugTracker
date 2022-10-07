@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Add Dev</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <title>Add Tester</title>
 </head>
 <body>
     <div th:replace="header"></div>
-    <h1 class="text-center">Add Dev</h1>
+    <h1 class="text-center">Add Tester</h1>
     <div class="container">
+        <span class="text-center" id="span"></span>
         <form id="form">
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -22,8 +23,8 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <label for="devEmail">Email</label>
-                    <input type="text" class="form-control" id="devEmail" placeholder="Email" name="devEmail">
+                    <label for="testerEmail">Email</label>
+                    <input type="text" class="form-control" id="testerEmail" placeholder="Email" name="testerEmail">
                 </div>
             </div>
             <button class="btn btn-primary" type="submit">Add</button>
@@ -32,6 +33,7 @@
 
     <script>
         const form = document.getElementById('form');
+        const span = document.getElementById('span');
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -39,15 +41,17 @@
             const formData = new FormData(form);
             const data = Object.fromEntries(formData);
 
-            fetch('http://localhost:8080/api/bt/dev/add', {
+            fetch('http://localhost:8080/api/bt/testers/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
+
+
             }).then(res => res.json())
-                .then(data => span.textContent = data)
-                .catch(error => span.textContent = error)
+              .then(data => span.textContent = data)
+              .catch(error => span.textContent = error)
         });
     </script>
 </body>

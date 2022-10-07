@@ -11,5 +11,5 @@ import lombok.*;
 public class RegistrationRequest {
     private final String username;
     private final String password;
-    private UserRole userRole;
+    private final UserRole userRole;
 }

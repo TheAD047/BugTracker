@@ -1,14 +1,15 @@
 package com.example.BugTracker.Requests;
 
+
 import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @EqualsAndHashCode
+@AllArgsConstructor
 @ToString
-public class DevRequest {
+public class TesterRequest {
     private final String firstName;
     private final String lastName;
-    private final String devEmail;
+    private final String testerEmail;
 }

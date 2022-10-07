@@ -9,11 +9,11 @@ import lombok.*;
 @EqualsAndHashCode
 @ToString
 public class BugRequest {
-    private String errorType;
-    private String severity;
-    private String errorNotes;
-    private String projectID;
-    private long testerID;
-    private String devsAssigned;
-    private boolean activeIndicator;
+    private final String errorType;
+    private final String severity;
+    private final String errorNotes;
+    private final String projectID;
+    private final long testerID;
+    private final String devsAssigned;
+    private final boolean activeIndicator;
 }

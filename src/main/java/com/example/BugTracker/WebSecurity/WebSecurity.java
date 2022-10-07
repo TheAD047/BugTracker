@@ -30,6 +30,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                     .permitAll()
                     .antMatchers("/api/bt/dev/add")
                     .permitAll()
+                    .antMatchers("/api/bt/testers/add")
+                    .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Testers Record</title>
@@ -7,7 +7,14 @@
 </head>
     <body>
         <div th:replace="header"></div>
-        <h1>Testers</h1>
+        <div class="text-center">
+            <h1>Testers</h1>
+            <p> </p>
+            <div sec:authorize="hasAuthority('ADMIN')">
+                <a href="/addTester" class="btn btn-primary">Add a Tester</a>
+            </div>
+        </div>
+        <hr>
         <table class="table">
             <thead>
                 <th scope="col">Tester ID</th>

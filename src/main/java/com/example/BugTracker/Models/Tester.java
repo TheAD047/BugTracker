@@ -24,6 +24,14 @@ public class Tester {
     @Column(name = "TESTER_EMAIL")
     private String testerEmail;
 
+    public Tester() {}
+
+    public Tester(String testerFirstName, String testerLastName, String testerEmail) {
+        this.testerFirstName = testerFirstName;
+        this.testerLastName = testerLastName;
+        this.testerEmail = testerEmail;
+    }
+
     @Override
     public String toString() {
         return "Tester{" +
